@@ -1,19 +1,20 @@
 <script>
 export default {
-   data() {
-       return {
-          titleClass: 'title'
-       }
-   }
+ data () {
+     return {
+         count: 0
+     }
+ },
+ methods: {
+     incremet(){
+         this.count++
+     }
+ }
 }
 </script>
 
 <template>
-   <h1 :class="titleClass">Make me blue</h1>
+    <button @click="increment">count is: {{ count }}</button>
 </template>
 
-<style scoped>
-.title{
-    color:blue;
-}
-</style>
+
