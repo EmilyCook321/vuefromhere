@@ -1,12 +1,17 @@
 <script>
-import ChildComp from './ChildComp.vue'
+import ChildComp from "./ChildComp.vue";
 export default {
   components: {
-    ChildComp
-  }
-}
+    ChildComp,
+  },
+  data() {
+    return {
+      greeting: "Hello from parent",
+    };
+  },
+};
 </script>
 
 <template>
-<ChildComp />
+  <ChildComp :msg="greeting" />
 </template>
