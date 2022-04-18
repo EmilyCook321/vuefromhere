@@ -1,12 +1,35 @@
 <script>
-let id = 0
+let id = 0;
 export default {
-mounted (){
-  this.$refs.p.textContent = 'mounted!'
-}
-}
+  data() {
+    return {
+      todoId: 1,
+      todoData: null,
+    };
+  },
+  methods: {
+    async fetchData() {
+      this.todoData = null;
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${this.todoId}`
+      );
+      this.todoData = await res.json();
+    },
+  },
+  mounted() {
+    this.fetchData();
+  },
+  watch: {
+    todoId() {
+      this.fetchData();
+    },
+  },
+};
 </script>
 
 <template>
-<p ref="p">hello</p>
+  <p>Todo id: {{ todoId }}</p>
+  <button @click="todoId++">Fetch next tofo</button>
+  <p v-if="!todoData">Loading...</p>
+  <pre v-else>{{ todoData }} </pre>
 </template>
