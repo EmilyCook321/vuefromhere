@@ -1,20 +1,18 @@
 <script>
 export default {
  data () {
-     return {
-         count: 0
-     }
- },
- methods: {
-     incremet(){
-         this.count++
-     }
+   return {
+       text: ''
+    
+   }
  }
-}
+ }
+
 </script>
 
 <template>
-    <button @click="increment">count is: {{ count }}</button>
+   <input v-model="text" placeholder="Type here">
+   <p>{{ text }}</p>
 </template>
 
 
